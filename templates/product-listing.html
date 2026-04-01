@@ -12,31 +12,33 @@
 <body>
   <header></header>
   <main>
-    <h1>{{categoryName}}</h1>
-    <div class="product-list-page">
-      {{#categoryDescription}}
-      <div>
-        <div><h2>Description</h2></div>
-        <div>{{{categoryDescription}}}</div>
-      </div>
-      {{/categoryDescription}}
-      {{#hasProducts}}
-      <div>
-        <div><h2>Products</h2></div>
+    <div>
+      <h1>{{categoryName}}</h1>
+      <div class="product-list-page">
+        {{#categoryDescription}}
         <div>
-          <ul>
-            {{#products}}
-            <li>
-              <a href="{{url}}">
-                {{#image}}<img src="{{image}}" alt="{{name}}">{{/image}}
-                <h3>{{name}}</h3>
-              </a>
-            </li>
-            {{/products}}
-          </ul>
+          <div><h2>Description</h2></div>
+          <div>{{{categoryDescription}}}</div>
         </div>
+        {{/categoryDescription}}
+        {{#hasProducts}}
+        <div>
+          <div><h2>Products</h2></div>
+          <div>
+            <ul>
+              {{#products}}
+              <li>
+                <a href="{{url}}">
+                  {{#image}}<img src="{{image}}" alt="{{name}}">{{/image}}
+                  <h3>{{name}}</h3>
+                </a>
+              </li>
+              {{/products}}
+            </ul>
+          </div>
+        </div>
+        {{/hasProducts}}
       </div>
-      {{/hasProducts}}
     </div>
   </main>
   <footer></footer>

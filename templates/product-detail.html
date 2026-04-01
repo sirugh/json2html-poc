@@ -16,61 +16,63 @@
 <body>
   <header></header>
   <main>
-    <div class="product-details">
-      <div>
+    <div>
+      <div class="product-details">
         <div>
-          <h1>{{name}}</h1>
+          <div>
+            <h1>{{name}}</h1>
+          </div>
         </div>
-      </div>
-      {{#images}}
-      <div>
-        <div><h2>Images</h2></div>
+        {{#images}}
         <div>
-          <ul>
-            {{#images}}
-            <li><img src="{{url}}" alt="{{label}}"></li>
-            {{/images}}
-          </ul>
+          <div><h2>Images</h2></div>
+          <div>
+            <ul>
+              {{#images}}
+              <li><img src="{{url}}" alt="{{label}}"></li>
+              {{/images}}
+            </ul>
+          </div>
         </div>
-      </div>
-      {{/images}}
-      {{#description}}
-      <div>
-        <div><h2>Description</h2></div>
-        <div>{{{description}}}</div>
-      </div>
-      {{/description}}
-      {{#priceRange}}
-      <div>
-        <div><h2>Price</h2></div>
-        <div>{{#minimum}}{{#final}}{{#amount}}{{value}} {{currency}}{{/amount}}{{/final}}{{/minimum}}</div>
-      </div>
-      {{/priceRange}}
-      {{#price}}
-      <div>
-        <div><h2>Price</h2></div>
-        <div>{{#final}}{{#amount}}{{value}} {{currency}}{{/amount}}{{/final}}</div>
-      </div>
-      {{/price}}
-      {{#options}}
-      <div>
-        <div><h2>Options</h2></div>
+        {{/images}}
+        {{#description}}
         <div>
-          <ul>
-            <li>
-              <h3>{{title}}</h3>
-              option id <em>{{id}}</em>
-              required <em>{{required}}</em>
-              {{#values}}
-              <ul>
-                <li>{{title}}</li>
-              </ul>
-              {{/values}}
-            </li>
-          </ul>
+          <div><h2>Description</h2></div>
+          <div>{{{description}}}</div>
         </div>
+        {{/description}}
+        {{#priceRange}}
+        <div>
+          <div><h2>Price</h2></div>
+          <div>{{#minimum}}{{#final}}{{#amount}}{{value}} {{currency}}{{/amount}}{{/final}}{{/minimum}}</div>
+        </div>
+        {{/priceRange}}
+        {{#price}}
+        <div>
+          <div><h2>Price</h2></div>
+          <div>{{#final}}{{#amount}}{{value}} {{currency}}{{/amount}}{{/final}}</div>
+        </div>
+        {{/price}}
+        {{#options}}
+        <div>
+          <div><h2>Options</h2></div>
+          <div>
+            <ul>
+              <li>
+                <h3>{{title}}</h3>
+                option id <em>{{id}}</em>
+                required <em>{{required}}</em>
+                {{#values}}
+                <ul>
+                  <li>{{title}}</li>
+                </ul>
+                {{/values}}
+              </li>
+            </ul>
+          </div>
+        </div>
+        {{/options}}
       </div>
-      {{/options}}
     </div>
   </main>
   <footer></footer>
