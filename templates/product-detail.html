@@ -1,81 +1,93 @@
-{{! PDP Mustache template for json2html. Data: Catalog Service GraphQL response. }}
 {{#data}}{{#products}}
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <title>{{metaTitle}}</title>
-  {{#metaDescription}}<meta name="description" content="{{metaDescription}}">{{/metaDescription}}
-  {{#metaKeyword}}<meta name="keywords" content="{{metaKeyword}}">{{/metaKeyword}}
-  {{#externalId}}<meta name="id" content="{{externalId}}">{{/externalId}}
-  <meta name="sku" content="{{sku}}">
-  {{#__typename}}<meta name="__typename" content="{{__typename}}">{{/__typename}}
-  {{#images}}<meta property="og:image" content="{{{images.0.url}}}">{{/images}}
-  <meta property="og:type" content="product">
-</head>
-<body>
-  <header></header>
-  <main>
-    <div>
-      <div class="product-details">
-        <div>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:type" content="og:product">
+    <meta name="sku" content="{{sku}}">
+    <title>{{#metaTitle}}{{metaTitle}}{{/metaTitle}}{{^metaTitle}}{{name}}{{/metaTitle}}</title>
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <div>
+        <div class="product-details">
           <div>
-            <h1>{{name}}</h1>
+            <div>
+              <h1{{#urlKey}} id="{{urlKey}}"{{/urlKey}}>{{name}}</h1>
+            </div>
           </div>
-        </div>
-        {{#images}}
-        <div>
-          <div><h2>Images</h2></div>
           <div>
-            <ul>
-              {{#images}}
-              <li><img src="{{{url}}}" alt="{{label}}"></li>
-              {{/images}}
-            </ul>
+            <div>
+              <h2 id="images">Images</h2>
+            </div>
+            <div>
+              <ul>
+                {{#images}}
+                <li>
+                  <picture>
+                    <source type="image/webp" srcset="{{{url}}}" media="(min-width: 600px)">
+                    <source type="image/webp" srcset="{{{url}}}">
+                    <source type="image/png" srcset="{{{url}}}" media="(min-width: 600px)">
+                    <img loading="lazy" alt="{{label}}" src="{{{url}}}" width="1024" height="1024">
+                  </picture>
+                </li>
+                {{/images}}
+              </ul>
+            </div>
           </div>
-        </div>
-        {{/images}}
-        {{#description}}
-        <div>
-          <div><h2>Description</h2></div>
-          <div>{{description}}</div>
-        </div>
-        {{/description}}
-        {{#priceRange}}
-        <div>
-          <div><h2>Price</h2></div>
-          <div>{{#minimum}}{{#final}}{{#amount}}{{value}} {{currency}}{{/amount}}{{/final}}{{/minimum}}</div>
-        </div>
-        {{/priceRange}}
-        {{#price}}
-        <div>
-          <div><h2>Price</h2></div>
-          <div>{{#final}}{{#amount}}{{value}} {{currency}}{{/amount}}{{/final}}</div>
-        </div>
-        {{/price}}
-        {{#options}}
-        <div>
-          <div><h2>Options</h2></div>
           <div>
-            <ul>
-              <li>
-                <h3>{{title}}</h3>
-                option id <em>{{id}}</em>
-                required <em>{{required}}</em>
-                {{#values}}
-                <ul>
-                  <li>{{title}}</li>
-                </ul>
-                {{/values}}
-              </li>
-            </ul>
+            <div>
+              <h2 id="description">Description</h2>
+            </div>
+            <div>{{#description}}{{description}}{{/description}}{{^description}}{{#shortDescription}}{{shortDescription}}{{/shortDescription}}{{/description}}</div>
           </div>
+          {{#priceRange}}
+          <div>
+            <div>
+              <h2 id="price">Price</h2>
+            </div>
+            <div>{{#minimum}}{{#final}}{{#amount}}{{currency}} {{value}}{{/amount}}{{/final}}{{/minimum}}</div>
+          </div>
+          {{/priceRange}}
+          {{^priceRange}}
+          {{#price}}
+          <div>
+            <div>
+              <h2 id="price">Price</h2>
+            </div>
+            <div>{{#final}}{{#amount}}{{currency}} {{value}}{{/amount}}{{/final}}</div>
+          </div>
+          {{/price}}
+          {{/priceRange}}
+          {{#options.0}}
+          <div>
+            <div>
+              <h2 id="options">Options</h2>
+            </div>
+            <div>
+              <ul>
+                {{#options}}
+                <li>
+                  <h3>{{title}}</h3>
+                  option id <em>{{id}}</em>
+                  required <em>{{required}}</em>
+                  <ul>
+                    {{#values}}
+                    <li>{{title}}</li>
+                    {{/values}}
+                  </ul>
+                </li>
+                {{/options}}
+              </ul>
+            </div>
+          </div>
+          {{/options.0}}
         </div>
-        {{/options}}
       </div>
-    </div>
-  </main>
-  <footer></footer>
-</body>
+    </main>
+    <footer></footer>
+  </body>
 </html>
 {{/products}}{{/data}}
