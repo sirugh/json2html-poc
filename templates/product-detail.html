@@ -10,7 +10,7 @@
   {{#externalId}}<meta name="id" content="{{externalId}}">{{/externalId}}
   <meta name="sku" content="{{sku}}">
   {{#__typename}}<meta name="__typename" content="{{__typename}}">{{/__typename}}
-  {{#images}}<meta property="og:image" content="{{images.0.url}}">{{/images}}
+  {{#images}}<meta property="og:image" content="{{{images.0.url}}}">{{/images}}
   <meta property="og:type" content="product">
 </head>
 <body>
@@ -29,7 +29,7 @@
           <div>
             <ul>
               {{#images}}
-              <li><img src="{{{url}}}" alt="{{label}}"></li>
+              <li><img src="{{url}}" alt="{{label}}"></li>
               {{/images}}
             </ul>
           </div>
@@ -38,7 +38,7 @@
         {{#description}}
         <div>
           <div><h2>Description</h2></div>
-          <!-- <div>{{description}}</div> -->
+          <div>{{description}}</div>
         </div>
         {{/description}}
         {{#priceRange}}
