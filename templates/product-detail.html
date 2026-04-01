@@ -5,13 +5,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta property="og:type" content="og:product">
     <meta name="sku" content="{{sku}}">
-    <title>{{name}}</title>
+    <title>{{#metaTitle}}{{metaTitle}}{{/metaTitle}}{{^metaTitle}}{{name}}{{/metaTitle}}</title>
   </head>
   <body>
     <header></header>
     <main>
       <div>
         <div class="product-details">
+          <div>
+            <div>
+              <h1{{#urlKey}} id="{{urlKey}}"{{/urlKey}}>{{name}}</h1>
+            </div>
+          </div>
+          <div>
+            <div>
+              <h2 id="images">Images</h2>
+            </div>
+            <div>
+              <ul>
+                {{#images}}
+                <li>
+                  <picture>
+                    <source type="image/webp" srcset="{{{url}}}" media="(min-width: 600px)">
+                    <source type="image/webp" srcset="{{{url}}}">
+                    <source type="image/png" srcset="{{{url}}}" media="(min-width: 600px)">
+                    <img loading="lazy" alt="{{label}}" src="{{{url}}}" width="1024" height="1024">
+                  </picture>
+                </li>
+                {{/images}}
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div>
+              <h2 id="description">Description</h2>
+            </div>
+            <div>{{#description}}{{description}}{{/description}}{{^description}}{{#shortDescription}}{{shortDescription}}{{/shortDescription}}{{/description}}</div>
+          </div>
+          {{#priceRange}}
+          <div>
+            <div>
+              <h2 id="price">Price</h2>
+            </div>
+            <div>{{#minimum}}{{#final}}{{#amount}}{{currency}} {{value}}{{/amount}}{{/final}}{{/minimum}}</div>
+          </div>
+          {{/priceRange}}
+          {{^priceRange}}
+          {{#price}}
+          <div>
+            <div>
+              <h2 id="price">Price</h2>
+            </div>
+            <div>{{#final}}{{#amount}}{{currency}} {{value}}{{/amount}}{{/final}}</div>
+          </div>
+          {{/price}}
+          {{/priceRange}}
+          {{#options.0}}
+          <div>
+            <div>
+              <h2 id="options">Options</h2>
+            </div>
+            <div>
+              <ul>
+                {{#options}}
+                <li>
+                  <h3>{{title}}</h3>
+                  option id <em>{{id}}</em>
+                  required <em>{{required}}</em>
+                  <ul>
+                    {{#values}}
+                    <li>{{title}}</li>
+                    {{/values}}
+                  </ul>
+                </li>
+                {{/options}}
+              </ul>
+            </div>
+          </div>
+          {{/options.0}}
         </div>
       </div>
     </main>
