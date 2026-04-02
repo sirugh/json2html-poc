@@ -4,6 +4,8 @@ This guide walks through configuring the **json2html worker** as a BYOM overlay 
 
 This guide uses a mixture of placeholders and example values - make sure to double check before running the commands.
 
+For a TLDR guide, see [the simplified version](./json2html-guide-simple.md)
+
 ---
 
 ## How It Works
