@@ -1,4 +1,5 @@
-{{! PDP Mustache template for json2html. Data: { data: { products: [ Commerce product view ] } } } }}
+{{! PDP Mustache template for json2html. https://developer.adobe.com/commerce/webapi/graphql/schema/catalog-service/queries/products/#output-fields
+Data: { data: { products: [ ProductView ] } } } }}
 {{#data}}
 {{#products}}
 <!DOCTYPE html>
@@ -6,15 +7,15 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="sku" content="{{sku}}">
+    <meta property="og:type" content="product">
+    <meta property="og:title" content="{{#metaTitle}}{{metaTitle}}{{/metaTitle}}{{^metaTitle}}{{name}}{{/metaTitle}}">
+    {{#url}}<link rel="canonical" href="{{{url}}}">{{/url}}
+    {{#url}}<meta property="og:url" content="{{{url}}}">{{/url}}
     <title>{{#metaTitle}}{{metaTitle}}{{/metaTitle}}{{^metaTitle}}{{name}}{{/metaTitle}}</title>
     {{#metaDescription}}<meta name="description" content="{{metaDescription}}">{{/metaDescription}}
     {{^metaDescription}}{{#shortDescription}}<meta name="description" content="{{shortDescription}}">{{/shortDescription}}{{/metaDescription}}
     {{#metaKeyword}}<meta name="keywords" content="{{metaKeyword}}">{{/metaKeyword}}
-    <meta name="sku" content="{{sku}}">
-    {{#url}}<link rel="canonical" href="{{{url}}}">{{/url}}
-    <meta property="og:type" content="product">
-    {{#url}}<meta property="og:url" content="{{{url}}}">{{/url}}
-    <meta property="og:title" content="{{#metaTitle}}{{metaTitle}}{{/metaTitle}}{{^metaTitle}}{{name}}{{/metaTitle}}">
     {{#metaDescription}}<meta property="og:description" content="{{metaDescription}}">{{/metaDescription}}
     {{^metaDescription}}{{#shortDescription}}<meta property="og:description" content="{{shortDescription}}">{{/shortDescription}}{{/metaDescription}}
     {{#images.0}}<meta property="og:image" content="{{{url}}}">{{#label}}<meta property="og:image:alt" content="{{label}}">{{/label}}{{/images.0}}
@@ -35,22 +36,10 @@
             </div>
           </div>
           {{#images.0}}
-          <div class="product-main-image">
+          <div>
             <img src="{{{url}}}" alt="{{label}}">
           </div>
           {{/images.0}}
-          {{#images.length}}
-          <div>
-            <div><h2>Images</h2></div>
-            <div>
-              <ul>
-                {{#images}}
-                <li><img src="{{{url}}}" alt="{{label}}"></li>
-                {{/images}}
-              </ul>
-            </div>
-          </div>
-          {{/images.length}}
           {{#description}}
           <div>
             <div><h2>Description</h2></div>
@@ -83,10 +72,10 @@
                     {{#values}}
                     <li>
                       {{#url}}
-                      <a href="{{url}}">{{title}}{{#inStock}}in stock{{/inStock}}{{^inStock}}out of stock{{/inStock}}</a>
+                      <a href="{{{url}}}">{{title}} {{#inStock}}in stock{{/inStock}}{{^inStock}}out of stock{{/inStock}}</a>
                       {{/url}}
                       {{^url}}
-                      {{title}}{{#inStock}}in stock{{/inStock}}{{^inStock}}out of stock{{/inStock}}
+                      {{title}} {{#inStock}}in stock{{/inStock}}{{^inStock}}out of stock{{/inStock}}
                       {{/url}}
                     </li>
                     {{/values}}
