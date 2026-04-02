@@ -421,7 +421,7 @@ This document details a basic implementation of the json2html overlay. There are
 
 - Minimize the query to just the requisite data for SEO/GEO. Current query probably over-fetches.
 - Create an intermediate worker for the json2html worker endpoint that takes `/products?sku={{headers['x-content-source-location']}}`  and contains the minimized query.
-- Add additional handling such as for more complex scenarios such as PLPs, etc.
+- Add additional handling such as for more complex scenarios such as PLPs, marketing/content fragment injections, etc.
 
 ## Appendix: Key URLs
 
