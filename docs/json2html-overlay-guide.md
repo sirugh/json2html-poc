@@ -29,7 +29,7 @@ The json2html worker (`json2html.adobeaem.workers.dev`) sits as a BYOM overlay. 
 
 ## Step 1: Create the Mustache Templates
 
-Templates live in your GitHub repo and are fetched by the json2html worker at render time via the site's CDN.
+Templates live in your GitHub repo and are fetched by the json2html worker at render time via the site's CDN. You can validate your template with the [json2html simulator](https://tools.aem.live/tools/json2html-simulator/index.html). Pass it a GQL response from a product query, such as one from [this page](https://www.aemshop.net/products/bezier-mega-tumbler/adb247).
 
 ### 1. Product Detail Page Template
 
