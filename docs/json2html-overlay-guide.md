@@ -420,6 +420,8 @@ Step 5 walks through **one** product. In production, every product URL under `/p
 This document details a basic implementation of the json2html overlay. There are several next steps to consider:
 
 - Minimize the query to just the requisite data for SEO/GEO. Current query probably over-fetches.
+- Add missing content, such as json-ld, etc.
+- Fix URL generation. Currently using Commerce urls in places, ie `aemshop.net/my-product-page.html`, instead of EDS format url such as `aemshop.net/products/my-product-key/my-product-page`.
 - Create an intermediate worker for the json2html worker endpoint that takes `/products?sku={{headers['x-content-source-location']}}`  and contains the minimized query.
 - Add additional handling such as for more complex scenarios such as PLPs, marketing/content fragment injections, etc.
 
