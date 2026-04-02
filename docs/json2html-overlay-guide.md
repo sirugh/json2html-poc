@@ -385,6 +385,14 @@ For example:
 
 ---
 
+## Step 6: Roll out to all product pages
+
+Step 5 walks through **one** product. In production, every product URL under `/products/` must be **previewed** and, when you are ready to go live, **published** through the same Admin API pattern (`POST` preview or `POST` live, with `x-content-source-location` set to the canonical SKU for each path, matching the lowercased path segment in the URL).
+
+- **Small catalogs:** You can repeat the preview and publish `curl` calls manually for each `urlKey` / SKU pair (or track them in a short checklist).
+- **Large catalogs:** Manual calls are impractical.Build an automation script you can run against your catalog to drive bulk preview and publish.
+---
+
 ## Summary Checklist
 
 | # | Step | Command/Action |
@@ -397,8 +405,17 @@ For example:
 | 6 | Preview a test product | `POST admin.hlx.page/preview/<helix-org>/<helix-site>/main/products/{urlKey}/{sku}` |
 | 7 | Verify at `.aem.page` URL | Browser: `https://main--<helix-site>--<helix-org>.aem.page/products/{urlKey}/{sku}` |
 | 8 | Publish when ready | `POST admin.hlx.page/live/<helix-org>/<helix-site>/main/products/{urlKey}/{sku}` |
+| 9 | Roll out to all products | Preview/publish every product URL (manual for small catalogs; script or automation for large catalogs — see **Next steps: All product pages**) |
 
 ---
+
+## Next Steps
+
+This document details a basic implementation of the json2html overlay. There are several next steps to consider:
+
+- Minimize the query to just the requisite data for SEO/GEO. Current query probably over-fetches.
+- Create an intermediate worker for the json2html worker endpoint that takes `/products?sku={{headers['x-content-source-location']}}`  and contains the minimized query.
+- Add additional handling such as for more complex scenarios such as PLPs, etc.
 
 ## Appendix: Key URLs
 
