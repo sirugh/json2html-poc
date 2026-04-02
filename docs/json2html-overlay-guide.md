@@ -142,7 +142,7 @@ Create `templates/product-detail.html` in the repo root. Here's an example templ
 
 - `<header></header>` and `<footer></footer>` are empty — EDS injects the site's global header/footer automatically.
 - Block markup follows EDS conventions: `<div class="block-name">` with child `<div>` rows and columns.
-- `{{{description}}}` uses triple-braces for unescaped HTML content.
+- `{{{description}}}` and `{{{url}}}`s uses triple-braces for unescaped HTML content.
 - The PDP template wraps in `{{#data}}{{#products}}` to traverse the Catalog Service GraphQL response shape.
 
 ---
