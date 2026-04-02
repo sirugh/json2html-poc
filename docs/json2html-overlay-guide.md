@@ -1,6 +1,6 @@
 # Using json2html as an Overlay for Commerce Pages on EDS
 
-This guide walks through configuring the **json2html worker** as a BYOM overlay on an Adobe Commerce EDS storefront site (`<helix-org>/<helix-site>`). The overlay can dynamically generate Product Detail Pages (PDP) (and more!) from live Commerce data using Mustache templates.
+This guide walks through configuring the **json2html worker** as a BYOM overlay on an Adobe Commerce EDS storefront site. The overlay can dynamically generate Product Detail Pages (PDP) (and more!) from live Commerce data using Mustache templates.
 
 This guide uses a mixture of placeholders and example values - make sure to double check before running the commands.
 
