@@ -4,7 +4,11 @@ This guide walks through configuring the **json2html worker** as a BYOM overlay 
 
 This guide uses a mixture of placeholders and example values - make sure to double check before running the commands.
 
-For a TLDR guide, see [the simplified version](./json2html-guide-simple.md)
+For a TLDR guide, see [the simplified version](./json2html-guide-simple.md).
+
+Here's some example pages published through this pipeline:
+ - Simple Product: https://main--json2html-poc--sirugh.aem.page/products/bezier-mega-tumbler/adb247
+ - Complex Product: https://main--json2html-poc--sirugh.aem.page/products/ssg-configurable-product/ssgconfig123
 
 ---
 
