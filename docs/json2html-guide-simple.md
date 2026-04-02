@@ -13,7 +13,7 @@ This guide walks you through the process of configuring the json2html worker to 
 <See templates/product-detail.html>
 
 # 2. POST the configuration to the json2html worker
-
+```bash
 curl --request POST \
 	--url https://json2html.adobeaem.workers.dev/config/sirugh/json2html-poc/main \
 	--header 'Authorization: token <TOKEN_HERE>' \
@@ -34,19 +34,22 @@ curl --request POST \
 		"forwardHeaders": ["x-content-source-location"]
 		}
 	]'
-
+```
 # 3. Check the json2html worker response, to ensure it is configured correctly
 
+```bash
 curl 'https://json2html.adobeaem.workers.dev/sirugh/json2html-poc/main/products/bezier-mega-tumbler/adb247' \
 	-H 'x-content-source-location: ADB247'
-
+```
 
 # 4. Preview the Page
 
+```bash
 curl --request POST \
   --url https://admin.hlx.page/preview/sirugh/json2html-poc/main/products/bezier-mega-tumbler/ADB247 \
   --header 'x-auth-token: <TOKEN_HERE>' \
   --header 'x-content-source-location: ADB247'
+```
 
 # 5. Inspect and validate the preview page
 
