@@ -10,20 +10,52 @@ Data: { data: { products: [ ProductView ] } } } }}
     <meta name="sku" content="{{sku}}">
     <meta property="og:type" content="product">
     <meta property="og:title" content="{{#metaTitle}}{{metaTitle}}{{/metaTitle}}{{^metaTitle}}{{name}}{{/metaTitle}}">
-    {{#url}}<link rel="canonical" href="{{{url}}}">{{/url}}
-    {{#url}}<meta property="og:url" content="{{{url}}}">{{/url}}
+    <link rel="canonical" href="/products/{{urlKey}}/{{sku}}">
+    <meta property="og:url" content="/products/{{urlKey}}/{{sku}}">
     <title>{{#metaTitle}}{{metaTitle}}{{/metaTitle}}{{^metaTitle}}{{name}}{{/metaTitle}}</title>
-    {{#metaDescription}}<meta name="description" content="{{metaDescription}}">{{/metaDescription}}
-    {{^metaDescription}}{{#shortDescription}}<meta name="description" content="{{shortDescription}}">{{/shortDescription}}{{/metaDescription}}
+    {{#metaDescription}}
+    <meta name="description" content="{{metaDescription}}">
+    <meta property="og:description" content="{{metaDescription}}">
+    <meta name="twitter:description" content="{{metaDescription}}">
+    {{/metaDescription}}
+    {{^metaDescription}}
+    {{#shortDescription}}
+    <meta name="description" content="{{shortDescription}}">
+    <meta property="og:description" content="{{shortDescription}}">
+    <meta name="twitter:description" content="{{shortDescription}}">
+    {{/shortDescription}}
+    {{/metaDescription}}
     {{#metaKeyword}}<meta name="keywords" content="{{metaKeyword}}">{{/metaKeyword}}
-    {{#metaDescription}}<meta property="og:description" content="{{metaDescription}}">{{/metaDescription}}
-    {{^metaDescription}}{{#shortDescription}}<meta property="og:description" content="{{shortDescription}}">{{/shortDescription}}{{/metaDescription}}
     {{#images.0}}<meta property="og:image" content="{{{url}}}">{{#label}}<meta property="og:image:alt" content="{{label}}">{{/label}}{{/images.0}}
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{#metaTitle}}{{metaTitle}}{{/metaTitle}}{{^metaTitle}}{{name}}{{/metaTitle}}">
-    {{#metaDescription}}<meta name="twitter:description" content="{{metaDescription}}">{{/metaDescription}}
-    {{^metaDescription}}{{#shortDescription}}<meta name="twitter:description" content="{{shortDescription}}">{{/shortDescription}}{{/metaDescription}}
     {{#images.0}}<meta name="twitter:image" content="{{{url}}}">{{/images.0}}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "sku": "{{sku}}",
+        "name": "{{name}}",
+        "gtin": "TODO",
+        {{#metaDescription}}"description": "{{metaDescription}}",{{/metaDescription}}
+        {{^metaDescription}}
+        {{#shortDescription}}"description": "{{shortDescription}}",{{/shortDescription}}
+        {{/metaDescription}}
+        "@id": "/products/{{urlKey}}/{{sku}}",
+        "image": {{#images.0}}"{{{url}}}"{{/images.0}}{{^images.0}}null{{/images.0}},
+        "offers": [
+          {
+            "@type": "Offer",
+            "sku": "{{sku}}",
+            "url": "/products/{{urlKey}}/{{sku}}",
+            "availability": "{{#inStock}}https://schema.org/InStock{{/inStock}}{{^inStock}}https://schema.org/OutOfStock{{/inStock}}",
+            "price": {{#price}}{{#final}}{{#amount}}{{value}}{{/amount}}{{^amount}}null{{/amount}}{{/final}}{{^final}}null{{/final}}{{/price}}{{^price}}{{#priceRange}}{{#minimum}}{{#final}}{{#amount}}{{value}}{{/amount}}{{^amount}}null{{/amount}}{{/final}}{{^final}}null{{/final}}{{/minimum}}{{^minimum}}null{{/minimum}}{{/priceRange}}{{^priceRange}}null{{/priceRange}}{{/price}},
+            "priceCurrency": "{{#price}}{{#final}}{{#amount}}{{currency}}{{/amount}}{{^amount}}USD{{/amount}}{{/final}}{{^final}}USD{{/final}}{{/price}}{{^price}}{{#priceRange}}{{#minimum}}{{#final}}{{#amount}}{{currency}}{{/amount}}{{^amount}}USD{{/amount}}{{/final}}{{^final}}USD{{/final}}{{/minimum}}{{/priceRange}}{{^priceRange}}USD{{/priceRange}}{{/price}}",
+            "itemCondition": "https://schema.org/NewCondition"
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <header></header>
