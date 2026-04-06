@@ -291,7 +291,7 @@ The workaround: use the `x-content-source-location` header to carry the canonica
 
 ### 4c. POST the Configuration
 
-Example configuration for POSTing to the json2html worker:
+Example configuration for POSTing to the json2html worker _(note the variable injection syntax for "x-content-source-location")_:
 
 ```bash
 curl --request POST \
