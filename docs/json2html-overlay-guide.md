@@ -301,15 +301,15 @@ curl --request POST \
 	--data '[
 		{
 		"path": "/products/",
-		"endpoint": "https://www.aemshop.net/cs-graphql?query=query+GET_PRODUCT_DATA%28%24skus%3A+%5BString%5D%29+%7B+products%28skus%3A+%24skus%29+%7B+...PRODUCT_FRAGMENT+%7D+%7D+fragment+PRODUCT_FRAGMENT+on+ProductView+%7B+__typename+id+sku+name+shortDescription+metaDescription+metaKeyword+metaTitle+description+inStock+addToCartAllowed+url+urlKey+externalId+images%28roles%3A+%5B%5D%29+%7B+url+label+roles+%7D+videos+%7B+description+url+title+preview+%7B+label+roles+url+%7D+%7D+attributes%28roles%3A+%5B%5D%29+%7B+name+label+value+roles+%7D+...+on+SimpleProductView+%7B+price+%7B+roles+regular+%7B+amount+%7B+value+currency+%7D+%7D+final+%7B+amount+%7B+value+currency+%7D+%7D+tiers+%7B+tier+%7B+amount+%7B+value+currency+%7D+%7D+quantity+%7B+...+on+ProductViewTierRangeCondition+%7B+gte+lt+%7D+%7D+%7D+%7D+%7D+...+on+ComplexProductView+%7B+options+%7B+...PRODUCT_OPTION_FRAGMENT+%7D+...PRICE_RANGE_FRAGMENT+%7D+%7D+fragment+PRODUCT_OPTION_FRAGMENT+on+ProductViewOption+%7B+id+title+required+multi+values+%7B+id+title+inStock+__typename+...+on+ProductViewOptionValueProduct+%7B+title+quantity+isDefault+__typename+product+%7B+sku+shortDescription+metaDescription+metaKeyword+metaTitle+name+price+%7B+final+%7B+amount+%7B+value+currency+%7D+%7D+regular+%7B+amount+%7B+value+currency+%7D+%7D+roles+%7D+%7D+%7D+...+on+ProductViewOptionValueSwatch+%7B+id+title+type+value+inStock+%7D+%7D+%7D+fragment+PRICE_RANGE_FRAGMENT+on+ComplexProductView+%7B+priceRange+%7B+maximum+%7B+final+%7B+amount+%7B+value+currency+%7D+%7D+regular+%7B+amount+%7B+value+currency+%7D+%7D+roles+%7D+minimum+%7B+final+%7B+amount+%7B+value+currency+%7D+%7D+regular+%7B+amount+%7B+value+currency+%7D+%7D+roles+%7D+%7D+%7D&variables=%7B%22skus%22%3A%5B%22{{headers['"'"'x-content-source-location'"'"']}}%22%5D%7D",
+		"endpoint": "https://catalog-service.adobe.io?query=query+GET_PRODUCT_DATA%28%24skus%3A+%5BString%5D%29+%7B+products%28skus%3A+%24skus%29+%7B+...PRODUCT_FRAGMENT+%7D+%7D+fragment+PRODUCT_FRAGMENT+on+ProductView+%7B+__typename+id+sku+name+shortDescription+metaDescription+metaKeyword+metaTitle+description+inStock+addToCartAllowed+url+urlKey+externalId+images%28roles%3A+%5B%5D%29+%7B+url+label+roles+%7D+videos+%7B+description+url+title+preview+%7B+label+roles+url+%7D+%7D+attributes%28roles%3A+%5B%5D%29+%7B+name+label+value+roles+%7D+...+on+SimpleProductView+%7B+price+%7B+roles+regular+%7B+amount+%7B+value+currency+%7D+%7D+final+%7B+amount+%7B+value+currency+%7D+%7D+tiers+%7B+tier+%7B+amount+%7B+value+currency+%7D+%7D+quantity+%7B+...+on+ProductViewTierRangeCondition+%7B+gte+lt+%7D+%7D+%7D+%7D+%7D+...+on+ComplexProductView+%7B+options+%7B+...PRODUCT_OPTION_FRAGMENT+%7D+...PRICE_RANGE_FRAGMENT+%7D+%7D+fragment+PRODUCT_OPTION_FRAGMENT+on+ProductViewOption+%7B+id+title+required+multi+values+%7B+id+title+inStock+__typename+...+on+ProductViewOptionValueProduct+%7B+title+quantity+isDefault+__typename+product+%7B+sku+shortDescription+metaDescription+metaKeyword+metaTitle+name+price+%7B+final+%7B+amount+%7B+value+currency+%7D+%7D+regular+%7B+amount+%7B+value+currency+%7D+%7D+roles+%7D+%7D+%7D+...+on+ProductViewOptionValueSwatch+%7B+id+title+type+value+inStock+%7D+%7D+%7D+fragment+PRICE_RANGE_FRAGMENT+on+ComplexProductView+%7B+priceRange+%7B+maximum+%7B+final+%7B+amount+%7B+value+currency+%7D+%7D+regular+%7B+amount+%7B+value+currency+%7D+%7D+roles+%7D+minimum+%7B+final+%7B+amount+%7B+value+currency+%7D+%7D+regular+%7B+amount+%7B+value+currency+%7D+%7D+roles+%7D+%7D+%7D&variables=%7B%22skus%22%3A%5B%22{{headers['"'"'x-content-source-location'"'"']}}%22%5D%7D",
 		"template": "/templates/product-detail.html",
 		"headers": {
-		"Magento-Store-Code": "your-store-code",
-		"Magento-Store-View-Code": "your-store-view-code",
-		"Magento-Website-Code": "your-website-code",
-		"x-api-key": "your-api-key",
-		"Magento-Environment-Id": "your-environment-id",
-		"Content-Type": "application/json"
+		  "Magento-Store-Code": "your-store-code",
+		  "Magento-Store-View-Code": "your-store-view-code",
+		  "Magento-Website-Code": "your-website-code",
+		  "x-api-key": "your-api-key",
+		  "Magento-Environment-Id": "your-environment-id",
+		  "Content-Type": "application/json"
 		},
 		"forwardHeaders": ["x-content-source-location"]
 		}
@@ -420,7 +420,6 @@ Step 5 walks through **one** product. In production, every product URL under `/p
 This document details a basic implementation of the json2html overlay. There are several next steps to consider:
 
 - Minimize the query to just the requisite data for SEO/GEO. Current query probably over-fetches.
-- Add missing content, such as json-ld, etc.
 - Fix URL generation. Currently using Commerce urls in places, ie `aemshop.net/my-product-page.html`, instead of EDS format url such as `aemshop.net/products/my-product-key/my-product-page`.
 - Create an intermediate worker for the json2html worker endpoint that takes `/products?sku={{headers['x-content-source-location']}}`  and contains the minimized query.
 - Add additional handling such as for more complex scenarios such as PLPs, marketing/content fragment injections, etc.
