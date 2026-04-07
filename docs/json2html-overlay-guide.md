@@ -18,6 +18,13 @@ The json2html worker (`json2html.adobeaem.workers.dev`) sits as a BYOM overlay. 
 
 ---
 
+## Considerations
+
+- The setup in this POC is not scalable because every preview and publish will hit the API separately.
+- A real setup would require a system which invokes preview or publish on commerce data change.
+
+---
+
 ## Prerequisites
 
 - **AEM Admin API token** — needed for both Config Service and json2html configuration. Obtain from your AEM admin or the [login page](https://admin.hlx.page/login).
