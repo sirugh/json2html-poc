@@ -16,7 +16,7 @@ Here's some example pages published through this pipeline:
 
 The json2html worker (`json2html.adobeaem.workers.dev`) sits as a BYOM overlay. On preview or publish, EDS will check this overlay and use the HTML result instead of content from the site's content source (usually DA). If the overlay does not return a result, EDS will fall through to the site's content source. The overlay will be configured to make an API call against the configured endpoint, and render the HTML using the configured template.
 
-<img width="2348" height="1022" alt="image" src="https://github.com/user-attachments/assets/dffcf720-39ba-4042-b2af-bdb4350f9e91" />
+<img width="2521" height="1100" alt="image" src="https://github.com/user-attachments/assets/54dfa4a6-b64d-41c1-9b97-c4c889c8da7d" />
 
 
 ---
@@ -25,6 +25,11 @@ The json2html worker (`json2html.adobeaem.workers.dev`) sits as a BYOM overlay. 
 
 - The setup in this POC is not scalable because every preview and publish will hit the API separately.
 - A real setup would require a system which invokes preview or publish on commerce data change.
+
+Potential solution architecture:
+
+<img width="2467" height="1123" alt="image" src="https://github.com/user-attachments/assets/d121dc19-3dc0-4949-bf4b-122c9887eb39" />
+
 
 ---
 
